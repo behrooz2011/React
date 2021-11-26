@@ -1,23 +1,46 @@
-import logo from './logo.svg';
+
 import './App.css';
+import './components/mainStyles.scss';
+import { useState, useEffect } from "react";
+import Form from './components/Form.component';
 
 function App() {
+  const [data1, setData1] = useState({
+    assessment_name:'',
+    additional_info:'',
+    target_MRL:'',
+    level_switiching:false,
+    date_target:'',
+    deskbook:'',
+    locationM:''
+  });
+  const [dataArray,setDataArray] = useState({team_members:[], choose_threads:[]});
+
+
+  const [inputText, setInputText] = useState("");
+  const [todos, setTodos] = useState([]);
+  const [status, setStatus] = useState("all");
+  const [filteredTodos, setFilteredTodos] = useState([]);
+
+  useEffect(() => {
+    // getLocalTodos();
+},[])
+
+useEffect(()=> {
+    // saveLocalTodos();
+    // filterHandler();
+}, [todos, status]);
+
+const {deskbook} = data1;
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="containerll">
+      <Form 
+        dataM={data1}
+        setDataFunction={setData1}
+        dataArray={dataArray}
+        setDataArrayFunction={setDataArray}
+
+        />
     </div>
   );
 }
